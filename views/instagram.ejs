@@ -1,0 +1,167 @@
+<%- include("includes/head.ejs") %>
+    <style>
+        body {
+            background-color: #000000; /* Dark Background */
+            color: #ffffff;            /* White Text */
+            font-family: sans-serif;   /* Simple Font */
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+            margin: 0;
+        }
+
+        .container {
+            width: 800px;
+            padding: 20px;
+        }
+
+        /* --- Header Section --- */
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #333;
+        }
+
+        .profile-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 50px;
+            flex-shrink: 0;
+            overflow: hidden; /* To clip the image if you add one */
+        }
+        
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .username-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .username {
+            font-size: 28px;
+            font-weight: 300;
+            margin-right: 20px;
+        }
+
+        .btn {
+            background-color: #0095f6;
+            color: white;
+            border: none;
+            padding: 7px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .btn-grey {
+            background-color: #363636;
+        }
+ 
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .bio {
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .bio-name { font-weight: bold; }
+        .link { color: #e0f1ff; text-decoration: none; }
+
+        /* --- Grid Section --- */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .post-item {
+            cursor: pointer;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .post-info {
+            padding-top: 8px;
+            font-size: 14px;
+            color: #ccc;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header">
+            <div class="profile-circle">
+                <img src="<%= data.pic %>" alt="" srcset="">
+                 </div>
+
+            <div class="info-section">
+                
+                <div class="username-row">
+                    <span class="username"><%= data.name %></span> 
+                    <button class="btn">Follow</button>
+                    <button class="btn btn-grey">Message</button>
+                </div>
+
+                <div class="stats">
+                    <span><strong><%= data.posts.length %></strong> posts</span>
+                    <span><strong><%= data.followers %></strong> followers</span>
+                    <span><strong><%= data.following %></strong> following</span>
+                </div>
+
+                <div class="bio">
+                    <div class="bio-name">♦ Official Account ♦</div>
+                    Ordinary servant, Extraordinary Allah ✨<br>
+                    Poetry Acc 👉 
+                    <a href="#" class="link">@<%= data.name.toLowerCase() %></a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="posts-grid">
+            <% for(post of data.posts){ %>
+            <div class="post-item">
+                <img src="<%= post.image  %>" alt="post" class="post-image">
+                <div class="post-info">
+                    <span>❤️ <%= post.likes %></span>
+                    <span>💬 <%= post.comments  %></span>
+                </div>
+            </div>
+            <% } %>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="/script.js"></script>
+</html>
