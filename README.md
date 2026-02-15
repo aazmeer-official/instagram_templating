@@ -121,13 +121,6 @@ First EJS Project 💻✨
 
 This project is open-source and free to use for learning purposes.
 
-
----
-
-If you want, I can also give you:
-✅ a **shorter README (minimal version)**  
-✅ a **more professional README (industry style)**  
-✅ a **README with screenshots section**  
 ✅ a **README with badges (Node, EJS, License)**  
 
 Just say which one you want:
